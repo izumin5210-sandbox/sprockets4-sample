@@ -1,0 +1,47 @@
+{
+  "name": "rails-with-modern-frondend-stack",
+  "description": "Sample app using Rails + modern frontend stack",
+  "version": "1.0.0",
+  "author": {
+    "name": "Masayuki IZUMI",
+    "email": "masayuki@izumin.info",
+    "url": "https://github.com/izumin5210"
+  },
+  "bugs": {
+    "url": "https://github.com/izumin5210/sprockets4-sample/issues"
+  },
+  "homepage": "https://github.com/izumin5210/sprockets4-sample#readme",
+  "license": {
+    "type": "MIT",
+    "url": "http://izumin.mit-license.org/2015"
+  },
+  "main": "index.js",
+  "private": true,
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/izumin5210/sprockets4-sample.git"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "devDependencies": {
+    "babel-plugin-transform-class-properties": "^6.11.5",
+    "babel-plugin-transform-decorators-legacy": "^1.3.4",
+    "babel-preset-es2015": "^6.14.0",
+    "babel-preset-react": "^6.11.1",
+    "babel-preset-stage-2": "^6.13.0",
+    "babelify": "^7.3.0",
+    "browserify": "^13.1.0",
+    "browserify-incremental": "^3.1.1"
+  },
+  "dependencies": {
+    "axios": "^0.14.0",
+    "babel-polyfill": "^6.13.0",
+    "lodash": "^4.15.0",
+    "normalizr": "^2.2.1",
+    "promised-reducer": "^0.1.0",
+    "react": "^15.3.1",
+    "react-dispatcher-decorator": "^0.1.5",
+    "react-dom": "^15.3.1"
+  }
+}
