@@ -1,38 +1,32 @@
-class Api::TodosController < ActionController::API
-  before_action :set_todo, only: %i(destroy complete incomplete)
+class Api::TodosController < Api::BaseController
+  include Garage::RestfulActions
 
-  def index
-    @todos = Todo.all
-    render json: @todos.to_json
+  def require_resources
+    @resources = Todo.all
   end
 
-  def create
-    @todo = Todo.create!(todo_params)
-    render json: @todo
+  def require_resource
+    @resource = Todo.find(params[:id])
   end
 
-  def destroy
-    @todo.destroy!
-    render json: @todo
+  def create_resource
+    @resource = @resources.new(todo_params)
+    @resource.save!
+    @resource
   end
 
-  def complete
-    @todo.update!(completed: true)
-    render json: @todo
+  def update_resource
+    @resource.update_attributes!(todo_params)
+    @resource
   end
-  
-  def incomplete
-    @todo.update!(completed: false)
-    render json: @todo
+
+  def destroy_resource
+    @resource.destroy!
   end
 
   private
 
-  def set_todo
-    @todo = Todo.find(params[:id])
-  end
-
   def todo_params
-    params.permit(:body)
+    params.permit(:body, :completed)
   end
 end

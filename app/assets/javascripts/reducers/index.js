@@ -55,9 +55,16 @@ export default function(self, subscribe) {
   });
 
   subscribe("todos:complete", props => {
-    axios.put(`/api/todos/${props.id}/complete`)
+    axios.patch(`/api/todos/${props.id}`, { completed: true })
       .then(res => {
-        mergeState("todos", normalize(res.data, TodosSchema));
+        mergeState("todos", {
+          entities: {
+            todos: { [props.id]: { completed: true } },
+          },
+          result: {
+            todos: [props.id],
+          },
+        });
       })
       .catch(err => {
         // TODO: Error handling
@@ -66,9 +73,16 @@ export default function(self, subscribe) {
   });
 
   subscribe("todos:incomplete", props => {
-    axios.delete(`/api/todos/${props.id}/complete`)
+    axios.patch(`/api/todos/${props.id}`, { completed: false })
       .then(res => {
-        mergeState("todos", normalize(res.data, TodosSchema));
+        mergeState("todos", {
+          entities: {
+            todos: { [props.id]: { completed: false } },
+          },
+          result: {
+            todos: [props.id],
+          },
+        });
       })
       .catch(err => {
         // TODO: Error handling
